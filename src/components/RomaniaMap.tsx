@@ -16,7 +16,7 @@ export default function RomaniaMap() {
       viewBox={DEFAULT_VIEW_BOX}
       preserveAspectRatio="xMinYMin"
       height="70vh"
-      // width="900"
+      width="80vw"
     >
       <g id="map-group">
         <svg

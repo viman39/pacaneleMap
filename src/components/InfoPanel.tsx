@@ -27,10 +27,14 @@ export default function InfoPanel() {
           {hoveredUat?.date && (
             <>
               {hoveredUat.date.populatie && (
-                <span>Populatie: {hoveredUat.date.populatie}</span>
+                <>
+                  <span>Populatie: {hoveredUat.date.populatie}</span> <br />
+                </>
               )}
               {hoveredUat.date.status && (
-                <span>Status: {hoveredUat.date.status}</span>
+                <>
+                  <span>Status: {hoveredUat.date.status}</span> <br />
+                </>
               )}
               {hoveredUat.date.mail && (
                 <a
@@ -40,7 +44,6 @@ export default function InfoPanel() {
                     color: "rgb(26,115,232)",
                     fontFamily: "Arial,sans-serif",
                     fontSize: "16px",
-                    padding: "6px 12px",
                     borderRadius: "4px",
                     textDecorationLine: "none",
                   }}
