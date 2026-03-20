@@ -5,3 +5,6 @@ export const MAIL_TO_BODY =
 export const DEFAULT_VIEW_BOX = "0 0 900 665";
 export const LIMITA_POPULATIE = 15000;
 export const HOVER_COLOR = "rgb(198, 226, 255)";
+
+export const LINK_LEGE_107_2024 =
+  "https://legislatie.just.ro/public/DetaliiDocument/281936#:~:text=trebuie%20s%C4%83%20se%20afle%20%C3%AEntr%2Do%20unitate%20administrativ%2Dteritorial%C4%83%20cu%20o%20popula%C8%9Bie%20mai%20mare%20de%2015.000%20de%20locuitori.";
