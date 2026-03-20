@@ -1,10 +1,11 @@
-import { useUatContext } from "../context/UatContext";
+import { useMapContext } from "../context/MapContext";
 import { HOVER_COLOR, LIMITA_POPULATIE } from "../data/constants";
 import type { UAT } from "../data/types";
 import { calcColorUat } from "../utils/utils";
 
 export const PathUAT = ({ uat }: { uat: UAT }) => {
-  const { setHoveredUat, hoveredUat } = useUatContext();
+  const { setHoveredUat, hoveredUat, selectedUat, setSelectedUat } =
+    useMapContext();
 
   const rgbUat = calcColorUat(uat);
   const color = uat?.date?.populatie > LIMITA_POPULATIE ? rgbUat : "white";
@@ -19,8 +20,15 @@ export const PathUAT = ({ uat }: { uat: UAT }) => {
       onMouseLeave={() => {
         setHoveredUat(undefined);
       }}
+      onClick={() => {
+        setHoveredUat(undefined);
+        setSelectedUat(selectedUat?.id === uat.id ? undefined : uat);
+      }}
       style={{
-        fill: hoveredUat?.id === uat.id ? HOVER_COLOR : color,
+        fill:
+          hoveredUat?.id === uat.id || selectedUat?.id === uat.id
+            ? HOVER_COLOR
+            : color,
         stroke: "#000",
         strokeWidth: uat?.resedinta ? "1" : "0.25",
       }}

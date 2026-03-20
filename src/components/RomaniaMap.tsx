@@ -1,11 +1,11 @@
-import { useUatContext } from "../context/UatContext";
 import { DEFAULT_VIEW_BOX } from "../data/constants";
 import { judete } from "../data/romania-counties";
+import { useGetCounty } from "../hooks/useGetCounty";
 import { PathJudet } from "./PathJudet";
 import { PathUAT } from "./PathUAT";
 
 export default function RomaniaMap() {
-  const { selectedUat } = useUatContext();
+  const judet = useGetCounty();
 
   return (
     <svg
@@ -22,18 +22,16 @@ export default function RomaniaMap() {
           strokeLinecap="round"
           strokeLinejoin="round"
           version="1.2"
-          viewBox={selectedUat ? selectedUat.bBox : DEFAULT_VIEW_BOX}
+          viewBox={judet ? judet?.bBox : DEFAULT_VIEW_BOX}
           preserveAspectRatio="xMinYMin"
         >
           <g id="UATs">
-            {selectedUat &&
-              selectedUat.UATs.map((uat: any) => (
-                <PathUAT key={uat.id} uat={uat} />
-              ))}
+            {judet &&
+              judet?.UATs.map((uat: any) => <PathUAT key={uat.id} uat={uat} />)}
           </g>
           <g id="counties">
-            {selectedUat ? (
-              <PathJudet judet={selectedUat} displayAuto={false} />
+            {judet ? (
+              <PathJudet judet={judet} displayAuto={false} />
             ) : (
               judete.map((judet) => (
                 <PathJudet key={judet.id} judet={judet} displayAuto={true} />
