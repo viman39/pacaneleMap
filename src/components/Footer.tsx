@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { CiMail } from "react-icons/ci";
 
 export const Footer = () => {
   return (
@@ -9,14 +11,14 @@ export const Footer = () => {
           href="https://www.facebook.com/instrada.ro/"
           target="_blank"
         >
-          <img src="/public/logo_text.png" alt="InStradaLink" width="60" />
+          <img src="/public/logo_text.png" alt="InStradaLink" width="100" />
         </a>
         <a
           className="text-slate-400 hover:text-[#775a00] transition-colors flex flex-col justify-center"
           href="https://www.declic.ro/"
           target="_blank"
         >
-          <img src="/public/logo_declic.webp" alt="DeclicLink" width="60" />
+          <img src="/public/logo_declic.webp" alt="DeclicLink" width="100" />
         </a>
       </div>
       <div className="flex gap-8">
@@ -28,30 +30,26 @@ export const Footer = () => {
         </Link>
       </div>
       <div className="flex gap-6">
-        {/* <a
-          className="text-slate-400 hover:text-[#775a00] transition-colors"
-          href="#"
-        >
-          <span className="material-symbols-outlined" data-icon="Facebook">
-            Facebook
-          </span>
-        </a>
         <a
-          className="text-slate-400 hover:text-[#775a00] transition-colors"
-          href="#"
-        >
-          <span className="material-symbols-outlined" data-icon="Instagram">
-            Instagram
-          </span>
-        </a> */}
-        <a
-          className="text-slate-400 hover:text-[#775a00] transition-colors"
-          href={`mailto:contac@instrada.ro`}
+          className="text-slate-400 transition-colors"
+          href="https://www.facebook.com/instrada.ro/"
           target="_blank"
         >
-          <span className="material-symbols-outlined" data-icon="mail">
-            mail
-          </span>
+          <FaFacebook className="hover:text-blue-600" size="22" />
+        </a>
+        <a
+          className="text-slate-400 transition-colors"
+          href="https://www.instagram.com/instrada.ro/"
+          target="_blank"
+        >
+          <FaInstagram className="hover:text-pink-500" size="22" />
+        </a>
+        <a
+          className="text-slate-400 transition-colors"
+          href={`mailto:instradaromania@gmail.com`}
+          target="_blank"
+        >
+          <CiMail className="hover:text-dark-600" size="22" />
         </a>
       </div>
     </footer>
