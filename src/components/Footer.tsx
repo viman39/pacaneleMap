@@ -11,14 +11,14 @@ export const Footer = () => {
           href="https://www.facebook.com/instrada.ro/"
           target="_blank"
         >
-          <img src="/public/logo_text.png" alt="InStradaLink" width="100" />
+          <img src="/logo_text.png" alt="InStradaLink" width="100" />
         </a>
         <a
           className="text-slate-400 hover:text-[#775a00] transition-colors flex flex-col justify-center"
           href="https://www.declic.ro/"
           target="_blank"
         >
-          <img src="/public/logo_declic.webp" alt="DeclicLink" width="100" />
+          <img src="/logo_declic.webp" alt="DeclicLink" width="100" />
         </a>
       </div>
       <div className="flex gap-8">
