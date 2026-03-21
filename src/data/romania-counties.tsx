@@ -12486,7 +12486,7 @@ export const judete: Judet[] = [
         nume: "Țăndărei",
       },
     ],
-    bBox: "584 456 153 62",
+    bBox: "584 456 154 62",
     autoX: 660,
     autoY: 487,
   },
