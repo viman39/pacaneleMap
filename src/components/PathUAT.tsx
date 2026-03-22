@@ -8,7 +8,7 @@ export const PathUAT = ({ uat }: { uat: UAT }) => {
     useMapContext();
 
   const rgbUat = calcColorUat(uat);
-  const color = uat?.date?.populatie > LIMITA_POPULATIE ? rgbUat : MAP_NEUTRAL;
+  const color = uat?.date?.populatie >= LIMITA_POPULATIE ? rgbUat : MAP_NEUTRAL;
 
   return (
     <path
@@ -32,7 +32,7 @@ export const PathUAT = ({ uat }: { uat: UAT }) => {
         stroke: "#000",
         strokeWidth: uat?.resedinta
           ? "0.7"
-          : uat?.date?.populatie > LIMITA_POPULATIE
+          : uat?.date?.populatie >= LIMITA_POPULATIE
           ? "0.4"
           : "0.2",
       }}

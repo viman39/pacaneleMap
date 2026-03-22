@@ -126,6 +126,18 @@ const UATInfoPanel = ({ uat }: { uat: UAT }) => {
           <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
             Status: {getStatus(uat.date.status)}
           </span>
+          {uat?.date?.linkPetitie && (
+            <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
+              <a
+                href={uat.date.linkPetitie}
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Semneaza Petita
+              </a>
+            </span>
+          )}
           {uat?.date?.mail && (
             <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
               <a
