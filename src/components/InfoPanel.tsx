@@ -7,6 +7,7 @@ import {
 } from "../data/constants";
 import { InterzicereStatus, type Judet, type UAT } from "../data/types";
 import { useGetCounty } from "../hooks/useGetCounty";
+import { FaChevronLeft, FaMap } from "react-icons/fa";
 
 export default function InfoPanel() {
   const { hoveredUat, selectedUat, hoveredJudet, selectedJudet } =
@@ -48,12 +49,7 @@ const HeaderButton = () => {
           className="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/20 px-6 py-2.5 rounded-full hover:bg-surface-container-low transition-colors shadow-sm"
           onClick={() => setSelectedUat(undefined)}
         >
-          <span
-            className="material-symbols-outlined text-secondary"
-            data-icon="arrow_back"
-          >
-            arrow_back
-          </span>
+          <FaChevronLeft className="text-yellow-500" size="16" />
           <span className="font-label font-bold text-sm text-primary">
             Inapoi
           </span>
@@ -64,12 +60,7 @@ const HeaderButton = () => {
           to={selectedJudet?.id}
           className="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/20 px-6 py-2.5 rounded-full hover:bg-surface-container-low transition-colors shadow-sm"
         >
-          <span
-            className="material-symbols-outlined text-secondary"
-            data-icon="map"
-          >
-            map
-          </span>
+          <FaMap className="text-yellow-500" size="16" />
           <span className="font-label font-bold text-sm text-primary">
             Harta {selectedJudet.nume}
           </span>
