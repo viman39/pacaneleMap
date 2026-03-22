@@ -17,23 +17,21 @@ export default function InfoPanel() {
   const displayJudet = judet || (hoveredJudet ? hoveredJudet : selectedJudet);
 
   return (
-    <div style={{ height: "22vh" }}>
-      <div className="sticky top-0 z-40 bg-surface/80 backdrop-blur-md px-6 md:px-12 py-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div className="flex items-center gap-6">
-          <div>
-            <h1 className="font-headline text-2xl font-extrabold tracking-tight text-primary">
-              {displayJudet ? displayJudet.nume : "Selecteaza un judet"}
-            </h1>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-              {displayUat && <UATInfoPanel uat={displayUat} />}
-              {!displayUat && displayJudet && (
-                <JudetInfoPanel judet={displayJudet} />
-              )}
-            </div>
+    <div className="sticky top-0 z-40 bg-surface/80 backdrop-blur-md px-6 md:px-12 py-6 min-h-[20vh] flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="flex items-center gap-6">
+        <div>
+          <h1 className="font-headline text-2xl font-extrabold tracking-tight text-primary">
+            {displayJudet ? displayJudet.nume : "Selecteaza un judet"}
+          </h1>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
+            {displayUat && <UATInfoPanel uat={displayUat} />}
+            {!displayUat && displayJudet && (
+              <JudetInfoPanel judet={displayJudet} />
+            )}
           </div>
         </div>
-        <HeaderButton />
       </div>
+      <HeaderButton />
     </div>
   );
 }
