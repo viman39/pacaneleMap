@@ -1,5 +1,5 @@
 import { useMapContext } from "../context/MapContext";
-import { HOVER_COLOR, LIMITA_POPULATIE } from "../data/constants";
+import { HOVER_COLOR, LIMITA_POPULATIE, MAP_NEUTRAL } from "../data/constants";
 import type { UAT } from "../data/types";
 import { calcColorUat } from "../utils/utils";
 
@@ -8,7 +8,7 @@ export const PathUAT = ({ uat }: { uat: UAT }) => {
     useMapContext();
 
   const rgbUat = calcColorUat(uat);
-  const color = uat?.date?.populatie > LIMITA_POPULATIE ? rgbUat : "white";
+  const color = uat?.date?.populatie > LIMITA_POPULATIE ? rgbUat : MAP_NEUTRAL;
 
   return (
     <path
@@ -30,7 +30,7 @@ export const PathUAT = ({ uat }: { uat: UAT }) => {
             ? HOVER_COLOR
             : color,
         stroke: "#000",
-        strokeWidth: uat?.resedinta ? "1" : "0.25",
+        strokeWidth: uat?.resedinta ? "0.7" : "0.25",
       }}
       data-originalStrokeWidth="0.25"
       stroke="#1e024b"

@@ -9,7 +9,7 @@ export default function RomaniaMap() {
 
   return (
     <section className="px-6 md:px-12 py-4 flex-1 bg-surface-container-low rounded-xl">
-      <div className="w-full h-100 overflow-hidden relative border border-outline-variant/10">
+      <div className="w-full h-100 overflow-hidden relative">
         <div className="inset-0 flex justify-center">
           <svg
             id="wrapper"

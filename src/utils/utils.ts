@@ -1,5 +1,18 @@
-import { LIMITA_POPULATIE } from "../data/constants";
+import {
+  LIMITA_POPULATIE,
+  MAP_WHITE,
+  MAP_YELLOW1,
+  MAP_YELLOW2,
+  MAP_YELLOW3,
+} from "../data/constants";
 import { InterzicereStatus, type Judet, type UAT } from "../data/types";
+
+const getMapColor = (p: number) => {
+  if (p === 0) return MAP_WHITE;
+  if (p < 50) return MAP_YELLOW1;
+  if (p < 100) return MAP_YELLOW2;
+  return MAP_YELLOW3;
+};
 
 export const calcColorJudet = (j: Judet) => {
   const jPuncte = j.UATs.reduce(
@@ -14,17 +27,13 @@ export const calcColorJudet = (j: Judet) => {
   );
 
   const procentPunctaj = Math.ceil((jPuncte[0] / jPuncte[1]) * 100);
-  const red = Math.ceil(255 - procentPunctaj * 2.55);
-  const green = Math.ceil(procentPunctaj * 2.55);
 
-  return `rgb(${red}, ${green}, 0)`;
+  return getMapColor(procentPunctaj);
 };
 
 export const calcColorUat = (uat: UAT) => {
   const status = uat?.date?.status ? uat?.date?.status : 0;
   const procentPunctaj = Math.ceil((status / InterzicereStatus.APROBAT) * 100);
-  const red = Math.ceil(255 - procentPunctaj * 2.55);
-  const green = Math.ceil(procentPunctaj * 2.55);
 
-  return `rgb(${red}, ${green}, 0)`;
+  return getMapColor(procentPunctaj);
 };
