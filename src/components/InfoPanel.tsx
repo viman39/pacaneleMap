@@ -5,7 +5,7 @@ import {
   MAIL_TO_BODY,
   MAIL_TO_SUBJECT,
 } from "../data/constants";
-import type { Judet, UAT } from "../data/types";
+import { InterzicereStatus, type Judet, type UAT } from "../data/types";
 import { useGetCounty } from "../hooks/useGetCounty";
 
 export default function InfoPanel() {
@@ -123,11 +123,9 @@ const UATInfoPanel = ({ uat }: { uat: UAT }) => {
               Populatie: {uat.date.populatie}
             </span>
           )}
-          {uat?.date?.status && (
-            <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
-              Status: {uat.date.status}
-            </span>
-          )}
+          <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
+            Status: {getStatus(uat.date.status)}
+          </span>
           {uat?.date?.mail && (
             <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
               <a
@@ -143,4 +141,19 @@ const UATInfoPanel = ({ uat }: { uat: UAT }) => {
       )}
     </>
   );
+};
+
+const getStatus = (status: number | undefined) => {
+  switch (status) {
+    case InterzicereStatus.ANUNTAT:
+      return "Anunțat";
+    case InterzicereStatus.PROPUS:
+      return "Propus în CL";
+    case InterzicereStatus.RESPINS:
+      return "Respins în CL";
+    case InterzicereStatus.APROBAT:
+      return "Aprobat în CL";
+    default:
+      return "Necunoscut";
+  }
 };

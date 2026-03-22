@@ -30,9 +30,12 @@ export const PathUAT = ({ uat }: { uat: UAT }) => {
             ? HOVER_COLOR
             : color,
         stroke: "#000",
-        strokeWidth: uat?.resedinta ? "0.7" : "0.25",
+        strokeWidth: uat?.resedinta
+          ? "0.7"
+          : uat?.date?.populatie > LIMITA_POPULATIE
+          ? "0.4"
+          : "0.2",
       }}
-      data-originalStrokeWidth="0.25"
       stroke="#1e024b"
     />
   );

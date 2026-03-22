@@ -49,7 +49,7 @@ export const Footer = () => {
           href={`mailto:instradaromania@gmail.com`}
           target="_blank"
         >
-          <CiMail className="hover:text-dark-600" size="22" />
+          <CiMail className="hover:text-gray-800" size="22" />
         </a>
       </div>
     </footer>
