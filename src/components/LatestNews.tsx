@@ -47,7 +47,7 @@ export const LatestNews = () => {
                   {d.titlu}
                 </h4>
               </div>
-              <div className="w-full flex flex-col md:flex-row items-start md:items-center gap-6">
+              <div className="w-full flex flex-col md:flex-row items-start md:items-center md:gap-6 gap-1">
                 <p className="text-xs text-on-surface-variant mt-1">
                   Data: {d.approvalDate}
                 </p>
