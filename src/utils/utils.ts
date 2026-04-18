@@ -37,3 +37,18 @@ export const calcColorUat = (uat: UAT) => {
 
   return getMapColor(procentPunctaj);
 };
+
+export const getStatusPetitie = (status: number | undefined) => {
+  switch (status) {
+    case InterzicereStatus.ANUNTAT:
+      return "Anunțat";
+    case InterzicereStatus.PROPUS:
+      return "Propus în CL";
+    case InterzicereStatus.RESPINS:
+      return "Respins în CL";
+    case InterzicereStatus.APROBAT:
+      return "Aprobat în CL";
+    default:
+      return "Necunoscut";
+  }
+};

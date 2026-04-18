@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { DespreCampanie } from "./components/DespreCampanie";
 import { Layout } from "./components/Layout";
 import InfoPanel from "./components/InfoPanel";
+import { LatestNews } from "./components/LatestNews";
 
 export default function App() {
   return (
@@ -20,5 +21,6 @@ const MainApp = () => (
   <>
     <InfoPanel />
     <RomaniaMap />
+    <LatestNews />
   </>
 );
