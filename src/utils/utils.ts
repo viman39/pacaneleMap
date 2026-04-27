@@ -41,14 +41,14 @@ export const calcColorUat = (uat: UAT) => {
 export const getStatusPetitie = (status: number | undefined) => {
   switch (status) {
     case InterzicereStatus.ANUNTAT:
-      return "Anunțat";
+      return "În dezbatere publica";
     case InterzicereStatus.PROPUS:
-      return "Propus în CL";
+      return "Pe ordinea de zi a CL";
     case InterzicereStatus.RESPINS:
       return "Respins în CL";
     case InterzicereStatus.APROBAT:
       return "Aprobat în CL";
     default:
-      return "Necunoscut";
+      return undefined;
   }
 };

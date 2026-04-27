@@ -94,6 +94,8 @@ const JudetInfoPanel = ({ judet }: { judet: Judet }) => {
 };
 
 const UATInfoPanel = ({ uat }: { uat: UAT }) => {
+  const status = getStatusPetitie(uat.date.status);
+
   return (
     <>
       <span className="text-xs font-label uppercase tracking-widest text-secondary font-bold">
@@ -115,9 +117,11 @@ const UATInfoPanel = ({ uat }: { uat: UAT }) => {
               Populatie: {uat.date.populatie}
             </span>
           )}
-          <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
-            Status: {getStatusPetitie(uat.date.status)}
-          </span>
+          {status && (
+            <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
+              Status: {status}
+            </span>
+          )}
           {uat?.date?.linkPetitie && (
             <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
               <a
