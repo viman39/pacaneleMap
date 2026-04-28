@@ -4,13 +4,16 @@ import "./index.css";
 import App from "./App.tsx";
 import { MapContextProvider } from "./context/MapContext.tsx";
 import { BrowserRouter } from "react-router-dom";
+import { DataContextProvider } from "./context/DataContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MapContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </MapContextProvider>
+    <DataContextProvider>
+      <MapContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </MapContextProvider>
+    </DataContextProvider>
   </StrictMode>,
 );

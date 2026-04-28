@@ -94,7 +94,7 @@ const JudetInfoPanel = ({ judet }: { judet: Judet }) => {
 };
 
 const UATInfoPanel = ({ uat }: { uat: UAT }) => {
-  const status = getStatusPetitie(uat.date.status);
+  const status = getStatusPetitie(uat?.date?.status);
 
   return (
     <>

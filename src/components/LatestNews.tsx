@@ -41,7 +41,10 @@ export const LatestNews = () => {
         </div>
         <div className="space-y-1">
           {news.map((d) => (
-            <div className="group flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-surface-container-lowest transition-all duration-300">
+            <div
+              key={d.link}
+              className="group flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-surface-container-lowest transition-all duration-300"
+            >
               <div className="w-full">
                 <h4 className="font-headline font-bold text-primary group-hover:text-secondary transition-colors">
                   {d.titlu}

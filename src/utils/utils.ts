@@ -1,16 +1,18 @@
 import {
   LIMITA_POPULATIE,
   MAP_WHITE,
-  MAP_YELLOW1,
-  MAP_YELLOW2,
   MAP_YELLOW3,
+  MAP_BLUE1,
+  MAP_BLUE2,
+  MAP_BLUE3,
 } from "../data/constants";
 import { InterzicereStatus, type Judet, type UAT } from "../data/types";
 
 const getMapColor = (p: number) => {
   if (p === 0) return MAP_WHITE;
-  if (p < 50) return MAP_YELLOW1;
-  if (p < 100) return MAP_YELLOW2;
+  if (p < 30) return MAP_BLUE1;
+  if (p < 60) return MAP_BLUE2;
+  if (p < 100) return MAP_BLUE3;
   return MAP_YELLOW3;
 };
 
