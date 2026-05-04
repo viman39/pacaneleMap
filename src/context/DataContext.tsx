@@ -10,6 +10,8 @@ import type { Judet } from "../data/types";
 
 interface DataContext {
   judete?: Judet[];
+  totalUAT?: number;
+  interziseUAT?: number;
 }
 
 const defaultDataContext: DataContext = {};
@@ -28,16 +30,37 @@ export const DataContextProvider = ({ children }: { children: ReactNode }) => {
       .then((res) => setData(res?.data));
   }, []);
 
-  const processedJudete = useMemo(() => {
-    console.log("calc judete", data);
-    return data;
+  const date = useMemo(() => {
+    const judete =
+      data &&
+      data.map((j) => {
+        return {
+          ...j,
+          totalUATValide: j.UATs?.filter((u) => u?.date?.populatie > 15000)
+            ?.length,
+          totalUATInterzise: j.UATs?.filter((u) => u?.date?.status === 4)
+            ?.length,
+        };
+      });
+
+    const [totalUAT, interziseUAT] = judete
+      ? judete.reduce(
+          (prev, curr) => [
+            prev[0] + (curr?.totalUATValide || 0),
+            prev[1] + (curr?.totalUATInterzise || 0),
+          ],
+          [0, 0],
+        )
+      : [0, 0];
+
+    return {
+      judete,
+      totalUAT,
+      interziseUAT,
+    };
   }, [data]);
 
-  return (
-    <DataContext.Provider value={{ judete: processedJudete }}>
-      {children}
-    </DataContext.Provider>
-  );
+  return <DataContext.Provider value={date}>{children}</DataContext.Provider>;
 };
 
 export const useDataContext = () => {

@@ -8,9 +8,13 @@ import {
 import { type Judet, type UAT } from "../data/types";
 import { useGetCounty } from "../hooks/useGetCounty";
 import { FaChevronLeft, FaMap } from "react-icons/fa";
-import { getStatusPetitie } from "../utils/utils";
+import { getMapColor, getStatusPetitie } from "../utils/utils";
+import { useDataContext } from "../context/DataContext";
+import Badge from "./common/Badge";
+import { calcColorJudet } from "../utils/utils";
 
 export default function InfoPanel() {
+  const { totalUAT, interziseUAT } = useDataContext();
   const { hoveredUat, selectedUat, hoveredJudet, selectedJudet } =
     useMapContext();
   const judet = useGetCounty();
@@ -26,6 +30,23 @@ export default function InfoPanel() {
             {displayJudet ? displayJudet.nume : "Selecteaza un judet"}
           </h1>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
+            {!displayUat && !displayJudet && interziseUAT && totalUAT && (
+              <>
+                <Badge
+                  style={{
+                    backgroundColor: getMapColor(
+                      Math.ceil((interziseUAT / totalUAT) * 100),
+                    ),
+                  }}
+                  className="text-on-surface-variant"
+                >
+                  {interziseUAT}/{totalUAT}
+                </Badge>
+                <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
+                  Orașe au interzis păcănelele
+                </span>
+              </>
+            )}
             {displayUat && <UATInfoPanel uat={displayUat} />}
             {!displayUat && displayJudet && (
               <JudetInfoPanel judet={displayJudet} />
@@ -77,6 +98,14 @@ const JudetInfoPanel = ({ judet }: { judet: Judet }) => {
       <span className="text-xs font-label uppercase tracking-widest text-secondary font-bold">
         UATs: {judet?.UATs.length}
       </span>
+      {judet?.totalUATInterzise !== undefined && judet?.totalUATValide && (
+        <Badge
+          style={{ backgroundColor: calcColorJudet(judet) }}
+          className="text-on-surface-variant"
+        >
+          {judet?.totalUATInterzise}/{judet?.totalUATValide}
+        </Badge>
+      )}
       {judet?.date?.linkPetitie && (
         <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
           <a
@@ -102,14 +131,21 @@ const UATInfoPanel = ({ uat }: { uat: UAT }) => {
         {uat?.nume}
       </span>
       {!uat?.date?.populatie || uat?.date?.populatie < 15000 ? (
-        <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
-          Conform legii{" "}
-          <a href={LINK_LEGE_107_2024} className="underline" target="_blank">
-            107/2024 Articolul 1, alineatul (6)
-          </a>{" "}
-          acest UAT nu se incadreaza in criteriile de populatie pentru a fi
-          vizibil pe harta.
-        </span>
+        <>
+          {uat?.date?.populatie && (
+            <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
+              Populatie: {uat.date.populatie}
+            </span>
+          )}
+          <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
+            Conform legii{" "}
+            <a href={LINK_LEGE_107_2024} className="underline" target="_blank">
+              107/2024 Articolul 1, alineatul (6)
+            </a>{" "}
+            acest UAT nu se incadreaza in criteriile de populatie pentru a fi
+            vizibil pe harta.
+          </span>
+        </>
       ) : (
         <>
           {uat?.date?.populatie && (

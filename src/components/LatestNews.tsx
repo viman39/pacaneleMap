@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGetCounty } from "../hooks/useGetCounty";
+import Badge from "./common/Badge";
 
 const date = [
   {
@@ -61,9 +62,9 @@ export const LatestNews = () => {
                   Location:{" "}
                   {d.judete.map((loc, index) => (
                     <Link to={`/${loc}`} key={loc + index}>
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold uppercase tracking-wider hover:bg-yellow-100 hover:text-black transition-colors duration-200">
+                      <Badge className="bg-tertiary-fixed text-on-tertiary-fixed hover:bg-yellow-100 hover:text-black transition-colors duration-200">
                         {loc}
-                      </span>
+                      </Badge>
                     </Link>
                   ))}
                 </p>

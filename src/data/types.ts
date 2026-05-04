@@ -8,6 +8,8 @@ export interface Judet {
   date?: any;
   autoX: number;
   autoY: number;
+  totalUATValide?: number;
+  totalUATInterzise?: number;
 }
 
 export interface UAT {
