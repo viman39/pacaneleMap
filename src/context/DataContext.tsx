@@ -22,7 +22,7 @@ export const DataContextProvider = ({ children }: { children: ReactNode }) => {
   const [data, setData] = useState<Judet[] | undefined>(undefined);
 
   useEffect(() => {
-    fetch("/src/data/romania-counties.json")
+    fetch("/romania-counties.json")
       .then((res) => {
         console.log(res);
         return res.json();

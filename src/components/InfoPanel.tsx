@@ -30,7 +30,7 @@ export default function InfoPanel() {
             {displayJudet ? displayJudet.nume : "Selecteaza un judet"}
           </h1>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-            {!displayUat && !displayJudet && interziseUAT && totalUAT && (
+            {!displayUat && !displayJudet && !!interziseUAT && !!totalUAT && (
               <>
                 <Badge
                   style={{
