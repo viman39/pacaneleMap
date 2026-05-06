@@ -3,6 +3,7 @@ import { DEFAULT_VIEW_BOX } from "../data/constants";
 import { useGetCounty } from "../hooks/useGetCounty";
 import { PathJudet } from "./PathJudet";
 import { PathUAT } from "./PathUAT";
+import Loader from "./common/Loader";
 
 export default function RomaniaMap() {
   const { judete } = useDataContext();
@@ -10,7 +11,7 @@ export default function RomaniaMap() {
 
   return (
     <section className="px-6 md:px-12 py-4 flex-1 bg-surface-container-low rounded-xl">
-      {!judete && <div>loading ...</div>}
+      {!judete && <Loader height="40vh" />}
       {judete && (
         <div className="w-full overflow-hidden relative">
           <div className="inset-0 flex justify-center">
