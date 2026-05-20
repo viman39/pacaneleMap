@@ -18,7 +18,7 @@ export default function useArticles() {
     setLoading(true);
     setError(null);
 
-    return fetch("http://localhost:3000/articles")
+    return fetch("https://pacanele-scraper.onrender.com/articles")
       .then((res) => {
         if (!res.ok) throw new Error(res.statusText || "Network error");
         return res.json();
