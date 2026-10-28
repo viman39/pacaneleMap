@@ -1,20 +1,11 @@
 import { FaMap } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { PageHeader } from "../components/PageHeader/PageHeader";
+import { HeaderLink } from "../components/PageHeader/HeaderLink";
 
-export const DespreCampanie = () => {
+export const AboutCampaign = () => {
   return (
     <>
-      <div className="sticky top-0 z-40 bg-surface/80 backdrop-blur-md px-6 md:px-12 py-6 min-h-[10vh] flex flex-col md:flex-row md:items-center justify-end gap-6">
-        <Link
-          to="/"
-          className="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/20 px-6 py-2.5 rounded-full hover:bg-surface-container-low transition-colors shadow-sm"
-        >
-          <FaMap className="text-yellow-500" size="16" />
-          <span className="font-label font-bold text-sm text-primary">
-            Inapoi la harta
-          </span>
-        </Link>
-      </div>
+      <PageHeader actions={<HeaderLink to="/" label="Înapoi la hartă" icon={<FaMap />} />} />
       <section className="px-6 md:px-12 py-4 flex-1 bg-surface-container-low rounded-xl">
         <div className="w-full overflow-hidden relative">
           <p className="py-2">

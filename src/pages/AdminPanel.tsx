@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 
 export const AdminPanel = () => {
-  const auth = useAuth();
+  const auth = { signOut: () => {}, user: { email: "" }, jwt: undefined };
 
   const handleSignOut = async () => {
     await auth.signOut();

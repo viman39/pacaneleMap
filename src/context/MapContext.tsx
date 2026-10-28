@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
+import type { County } from "../app/types";
 
 interface MapContext {
   selectedUat: any;
@@ -9,6 +10,10 @@ interface MapContext {
   setHoveredJudet: (judet: any) => void;
   selectedJudet: any;
   setSelectedJudet: (judet: any) => void;
+  hoveredCounty: County | undefined;
+  setHoveredCounty: (county: County | undefined) => void;
+  selectedCounty: County | undefined;
+  setSelectedCounty: (county: County | undefined) => void;
 }
 
 const MapContext = createContext<MapContext>({
@@ -20,6 +25,10 @@ const MapContext = createContext<MapContext>({
   setHoveredJudet: () => {},
   selectedJudet: undefined,
   setSelectedJudet: () => {},
+  selectedCounty: undefined,
+  setSelectedCounty: () => {},
+  hoveredCounty: undefined,
+  setHoveredCounty: () => {},
 });
 
 export const MapContextProvider = ({ children }: { children: ReactNode }) => {
@@ -27,6 +36,12 @@ export const MapContextProvider = ({ children }: { children: ReactNode }) => {
   const [hoveredUat, setHoveredUat] = useState<any>(undefined);
   const [hoveredJudet, setHoveredJudet] = useState<any>(undefined);
   const [selectedJudet, setSelectedJudet] = useState<any>(undefined);
+  const [selectedCounty, setSelectedCounty] = useState<County | undefined>(
+    undefined,
+  );
+  const [hoveredCounty, setHoveredCounty] = useState<County | undefined>(
+    undefined,
+  );
 
   return (
     <MapContext.Provider
@@ -39,6 +54,10 @@ export const MapContextProvider = ({ children }: { children: ReactNode }) => {
         setHoveredJudet,
         selectedJudet,
         setSelectedJudet,
+        selectedCounty,
+        setSelectedCounty,
+        hoveredCounty,
+        setHoveredCounty,
       }}
     >
       {children}

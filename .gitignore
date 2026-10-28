@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 src/components/RomaniaMapOld.tsx
+src/data/populatie_judete
+/.github
+/update_population.py
 
 # Editor directories and files
 .vscode/*
@@ -23,3 +26,5 @@ src/components/RomaniaMapOld.tsx
 *.njsproj
 *.sln
 *.sw?
+.env
+.env.dev

@@ -1,24 +1,28 @@
-import { useNavigate, useParams } from "react-router-dom";
-import type { Judet } from "../data/types";
+import type { CountyDTO } from "../app/types";
+import { useGetCountiesQuery } from "../app/apiSlice";
 import { useEffect } from "react";
-import { useDataContext } from "../context/DataContext";
+import { useNavigate } from "react-router-dom";
 
-export const useGetCounty = (): Judet | undefined => {
-  const { judete } = useDataContext();
-  const { countyName } = useParams<{ countyName: string }>();
+export const useGetCounty = (countySlug?: string): CountyDTO | undefined => {
+  const {
+    data: counties,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useGetCountiesQuery();
   const navigate = useNavigate();
 
-  const findJudet = countyName
-    ? judete?.find((j) => j.id.toLowerCase() === countyName.toLowerCase())
-    : undefined;
+  const countyFound =
+    (!isLoading &&
+      !isError &&
+      counties?.find((county) => county?.slug === countySlug?.toLowerCase())) ||
+    undefined;
 
   useEffect(() => {
-    return () => {
-      if (countyName && !findJudet) {
-        navigate("/", { replace: true });
-      }
-    };
-  }, [countyName]);
+    if (countySlug && isSuccess && !countyFound) {
+      navigate("/", { replace: true });
+    }
+  }, [countySlug, isSuccess, countyFound]);
 
-  return findJudet;
+  return countyFound;
 };

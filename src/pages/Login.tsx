@@ -1,6 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 
 type LocationState = {
   from?: {
@@ -9,7 +8,15 @@ type LocationState = {
 };
 
 export const Login = () => {
-  const auth = useAuth();
+  const auth = {
+    loading: false,
+    user: undefined,
+    signIn: (a: any, b: any) => {
+      console.log(a, b);
+      return new Promise((res, req) => res(false));
+    },
+    error: undefined,
+  };
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");

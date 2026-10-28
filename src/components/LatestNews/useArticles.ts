@@ -1,13 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-
-export interface Article {
-  title: string;
-  link: string;
-  source: string;
-  date: string;
-  sourceLink?: string;
-  locations: string[];
-}
+import type { Article } from "./latestNews.types";
 
 export default function useArticles() {
   const [articles, setArticles] = useState<Article[] | null>(null);

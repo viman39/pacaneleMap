@@ -1,13 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
 import type { ReactNode } from "react";
-import { useAuth } from "../context/AuthContext";
 
 interface RequireAuthProps {
   children: ReactNode;
 }
 
 export const RequireAuth = ({ children }: RequireAuthProps) => {
-  const { loading, user } = useAuth();
+  const { loading, user } = { loading: false, user: undefined };
   const location = useLocation();
 
   if (loading) {

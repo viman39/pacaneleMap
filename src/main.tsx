@@ -1,22 +1,20 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
 import { MapContextProvider } from "./context/MapContext.tsx";
 import { BrowserRouter } from "react-router-dom";
-import { DataContextProvider } from "./context/DataContext.tsx";
-import { AuthProvider } from "./context/AuthContext.tsx";
+import App from "./app/App.tsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <DataContextProvider>
+    <Provider store={store}>
       <MapContextProvider>
-        <AuthProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </MapContextProvider>
-    </DataContextProvider>
+    </Provider>
   </StrictMode>,
 );
